@@ -64,7 +64,7 @@ public class Wheel extends View {
 
     public void move(int percent) {
         sweepAngle = (float) ((percent / 100.0) * 360);
-        cx = 514 + (float) (514 * sin(sweepAngle * 0.0174533)) + padding;
+        cx = 514 + (float) (514 * sin(sweepAngle * 0.0174533));
         System.out.println("Cx is " + cx);
         cy = (((float) (514 * cos(sweepAngle * 0.0174533))) - 514 + padding) * 1;
         cy = 200 - cy;
@@ -79,12 +79,13 @@ public class Wheel extends View {
         canvas.drawOval(ring, ringPaint);
 
 
-        canvas.drawCircle(cx, cy, 30, circlePaint);
+
 
         Paint p = new Paint();
         p.setStyle(Paint.Style.STROKE);
         p.setStrokeWidth(20);
         p.setColor(Color.parseColor("#4CAF50"));
         canvas.drawArc(ring, -90, sweepAngle, false, p);
+        canvas.drawCircle(cx, cy, 30, circlePaint);
     }
 }
